@@ -1,4 +1,4 @@
-package com.xrj.demo.common.model;
+package com.xrj.demo.user.vo;
 
 import java.util.Date;
 import java.util.List;
@@ -6,10 +6,9 @@ import java.util.List;
 import lombok.Data;
 
 @Data
-public class User {
+public class UserVO {
 
-//    @Id
-    private String id;
+    private Long id;
 
     private String username;
 

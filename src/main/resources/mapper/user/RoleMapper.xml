@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xrj.demo.user.mapper.RoleMapper">
+	<select id="queryRolesByUserPhone" resultType="string">
+		SELECT t3.role FROM tbl_user t1
+		left join tbl_user_role t2 on t1.id = t2.user_id
+		left join tbl_role t3 on t2.role_id = t3.id
+		where phone = #{phone}
+	</select>
+	
+	<select id="queryRolesByUserId" resultType="string">
+		SELECT t3.role FROM tbl_user t1
+		left join tbl_user_role t2 on t1.id = t2.user_id
+		left join tbl_role t3 on t2.role_id = t3.id
+		where t1.id = #{userId}
+	</select>
+</mapper>

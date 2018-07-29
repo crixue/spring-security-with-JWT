@@ -1,15 +1,19 @@
 package com.xrj.demo.config;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import lombok.Data;
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.Date;
 
+@Data
 public class JwtUser implements UserDetails {
 	private static final long serialVersionUID = -7267402860061570647L;
-	private final String id;
+	private Long id;
     private final String username;
     private final String password;
     private final String email;
@@ -18,7 +22,7 @@ public class JwtUser implements UserDetails {
     private final Date lastPasswordResetDate;
 
     public JwtUser(
-            String id,
+    		Long id,
             String username,
             String password,
             String email,
@@ -34,13 +38,14 @@ public class JwtUser implements UserDetails {
         this.lastPasswordResetDate = lastPasswordResetDate;
     }
 
-    @Override
+
+	@Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return authorities;
     }
 
     @JsonIgnore
-    public String getId() {
+    public Long getId() {
         return id;
     }
 

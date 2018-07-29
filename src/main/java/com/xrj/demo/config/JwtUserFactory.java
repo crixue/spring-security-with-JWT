@@ -6,14 +6,14 @@ import java.util.stream.Collectors;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
-import com.xrj.demo.common.model.User;
+import com.xrj.demo.user.vo.UserVO;
 
 public class JwtUserFactory {
 
     private JwtUserFactory() {
     }
 
-    public static JwtUser create(User user) {
+    public static JwtUser create(UserVO user) {
         return new JwtUser(
                 user.getId(),
                 user.getUsername(),
