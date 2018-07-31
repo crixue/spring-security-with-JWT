@@ -22,9 +22,25 @@ public class JwtUserDetailServiceImpl implements UserDetailsService {
 	@Autowired
 	private RoleMapper roleMapper;
 	
+//	@Override
+//	public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException {
+//		User user = userMapper.selectByPrimaryKey(Long.valueOf(userId));
+//		if(user != null) {
+//			UserVO userVO = new UserVO();
+//			BeanUtils.copyProperties(user, userVO);
+//			List<String> roles = roleMapper.queryRolesByUserId(user.getId());
+//			userVO.setRoles(roles);
+//			return JwtUserFactory.create(userVO);
+//		}
+//		throw new UsernameNotFoundException(String.format("No user found with username '%s'.", userId));
+//	}
+	
 	@Override
-	public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException {
-		User user = userMapper.selectByPrimaryKey(Long.valueOf(userId));
+	public UserDetails loadUserByUsername(String phone) throws UsernameNotFoundException {
+		User record = new User();
+		record.setPhone(phone);
+		
+		User user = userMapper.selectOne(record);
 		if(user != null) {
 			UserVO userVO = new UserVO();
 			BeanUtils.copyProperties(user, userVO);
@@ -32,7 +48,7 @@ public class JwtUserDetailServiceImpl implements UserDetailsService {
 			userVO.setRoles(roles);
 			return JwtUserFactory.create(userVO);
 		}
-		throw new UsernameNotFoundException(String.format("No user found with username '%s'.", userId));
+		throw new UsernameNotFoundException(String.format("No user found with username '%s'.", phone));
 	}
 
 }

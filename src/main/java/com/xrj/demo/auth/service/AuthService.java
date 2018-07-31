@@ -6,8 +6,12 @@ public interface AuthService {
 
 	String refresh(String oldToken);
 
-	User register(User userToAdd);
+	//User register(User userToAdd);
 
-	String login(String username, String password);
+	//String login(String username, String password);
+
+	User registerByPhone(User userToAdd);
+
+	String loginByPhone(String phone, String password);
 
 }

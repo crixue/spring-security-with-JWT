@@ -8,7 +8,7 @@ import lombok.Data;
 @Data
 public class Role {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
 
     private String role;

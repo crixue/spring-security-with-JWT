@@ -3,7 +3,7 @@ jwt:
   header: Authorization
   secret: mySecret
   expiration: 604800
-  tokenHead: "Bearer "
+  tokenHead: "token "
   route:
     authentication:
       path: auth
@@ -18,7 +18,7 @@ mybatis:
     default-statement-timeout: 30
 mapper:
     mappers:
-        - com.fanshan.lib.common.mapper.MyBaseMapper
+        - com.xrj.demo.common.mapper.MyBaseMapper
     not-empty: false
     identity: mysql
 
@@ -59,6 +59,6 @@ spring:
       
 logging:
   level:
-    ROOT: DEBUG
+    ROOT: INFO
       
       
