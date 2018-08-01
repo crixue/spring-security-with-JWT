@@ -2,7 +2,6 @@ package com.xrj.demo.common.util;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -12,7 +11,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
-import org.springframework.util.StringUtils;
 
 import com.xrj.demo.config.JwtUser;
 
@@ -32,6 +30,7 @@ public class JwtTokenUtil implements Serializable {
 	public static final String CLAIM_KEY_PHONE = "phone";
 	public static final String CLAIM_KEY_EMAIL = "email";
 	public static final String CLAIM_KEY_USER_ID = "userid";
+	public static final String CLAIM_KEY_AUTHORTIES = "";
 
 	@Value("${jwt.secret}")
 	private String secret;
@@ -174,6 +173,15 @@ public class JwtTokenUtil implements Serializable {
 			refreshedToken = null;
 		}
 		return refreshedToken;
+	}
+	
+	public Boolean validateTokenByPhone(String token, UserDetails userDetails) {
+		JwtUser user = (JwtUser) userDetails;
+		final String phone = getUserPhoneFromToken(token);
+		final Date created = getCreatedDateFromToken(token);
+		// final Date expiration = getExpirationDateFromToken(token);
+		return (phone.equals(user.getPhone()) && !isTokenExpired(token)
+				&& !isCreatedBeforeLastPasswordReset(created, user.getLastPasswordResetDate()));
 	}
 
 	public Boolean validateToken(String token, UserDetails userDetails) {

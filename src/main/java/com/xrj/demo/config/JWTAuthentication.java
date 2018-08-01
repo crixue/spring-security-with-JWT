@@ -3,8 +3,6 @@ package com.xrj.demo.config;
 import org.springframework.security.authentication.AbstractAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import lombok.Getter;
-
 public class JWTAuthentication extends AbstractAuthenticationToken {
 	
 	public JWTAuthentication(UserDetails principal, String jsonWebToken) {

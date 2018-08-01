@@ -24,18 +24,34 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	@Autowired
     private UserDetailsService userDetailsService;
 	
+	@Autowired
+	private JwtAuthenticationProvider customJwtAuthenticationProvider;
+	
     @Bean
     public JwtAuthenticationTokenFilter authenticationTokenFilterBean() throws Exception {
         return new JwtAuthenticationTokenFilter();
     }
+    
+    @Bean
+    @Override
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        // This method is here with the @Bean annotation so that Spring can
+        // autowire it
+        return super.authenticationManagerBean();
+    }
 
     /**
-     * 配置认证Manager
+     * 配置认证Manager,自定义身份验证
      * @param authenticationManagerBuilder
      * @throws Exception
      */
+//    @Override
+//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+//        auth.authenticationProvider(customJwtAuthenticationProvider);
+//    }
+    
     @Autowired
-    public void configureAuthentication(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
+    protected void configure(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
         authenticationManagerBuilder
                 .userDetailsService(this.userDetailsService)
                 .passwordEncoder(passwordEncoder());

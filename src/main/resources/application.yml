@@ -32,8 +32,8 @@ spring:
   datasource:
     # 使用druid数据源
     type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:mysql://192.168.36.110:3306/springSecrity?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&allowMultiQueries=true
-    username: xrj
+    url: jdbc:mysql://127.0.0.1:3306/springSecrity?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&allowMultiQueries=true
+    username: root
     password: xue13581321
     druid:
       initialSize: 5

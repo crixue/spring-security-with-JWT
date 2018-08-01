@@ -2,10 +2,10 @@ package com.xrj.demo.user.model;
 
 public enum RoleEnum {
 	
-	ROLE_ADMIN(1, "ADMIN"),
-	ROLE_USER(2, "USER"),
-	ROLE_VIP(3, "VIP"),
-	ROLE_GUEST(4, "GUEST");
+	ROLE_ADMIN(1, "ROLE_ADMIN"),
+	ROLE_USER(2, "ROLE_USER"),
+	ROLE_VIP(3, "ROLE_VIP"),
+	ROLE_GUEST(4, "ROLE_GUEST");
 
 	private final int code;
 	private final String desc;
